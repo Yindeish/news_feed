@@ -12,7 +12,7 @@ import { images } from "@/constants/images";
 import { useAppDispatch } from "@/hooks/state_types";
 import { CategoryEnum, CategoryType, News } from "@/interfaces/news";
 import news_selectors from "@/selectors/news";
-import { set_top_head_line_news, useGet_top_headlinesQuery } from "@/state/slices/news";
+import { set_top_head_line_news, useGet_everythingQuery, useGet_top_headlinesQuery } from "@/state/slices/news";
 import Flame from "@/svgs/flame";
 import Triangle from "@/svgs/triangle";
 import { today_date, today_gmt_time } from "@/utils";
@@ -24,9 +24,11 @@ function NewsScreenHome() {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const { inter, open_sans } = use_fonts();
-    const { business_news, local_news, category, country, top_head_line_news } = news_selectors()
+    const { business_news, local_news, category, country, top_head_line_news, date } = news_selectors()
 
     const { isLoading: top_headlines_loading, data: top_headlines_data, error: top_headlines_error } = useGet_top_headlinesQuery({ category, country });
+
+    const { isLoading: headline_loading, data: headline_data, error: headline_error } = useGet_everythingQuery({ query: CategoryEnum.politics, date: date as string });
 
     const go_to_news = (news: News) => {
         localStorage.setItem('current_news', JSON.stringify(news))
@@ -34,9 +36,15 @@ function NewsScreenHome() {
     }
 
     useEffect(() => {
-        const articles = (top_headlines_data?.articles as News[])?.map((article, index: number) => ({ ...article, id: index }));;
+        const articles = (headline_data?.articles as News[])?.map((article, index: number) => ({ ...article, id: index, urlToImage: article?.urlToImage || 'https://clarionhealthcare.com/wp-content/uploads/2020/12/default-fallback-image-1536x1024.png' }));;
 
         dispatch(set_top_head_line_news(articles));
+    }, [headline_loading, headline_data, headline_error])
+
+    useEffect(() => {
+        // const articles = (top_headlines_data?.articles as News[])?.map((article, index: number) => ({ ...article, id: index }));;
+
+        // dispatch(set_top_head_line_news(articles));
     }, [top_headlines_loading, top_headlines_data, top_headlines_error])
 
     return (
@@ -46,10 +54,15 @@ function NewsScreenHome() {
             <div className="w-full h-[fit-content] flex flex-col gap-[1em] pb-[1em]">
                 <Container className="flex gap-[3em] py-[3em] h-[75%]">
                     <div className="w-[55%] h-full flex flex-col gap-[2em]">
-                        <img className="w-full h-[400px] object-cover rounded-[1.5em]" src={top_head_line_news?.[0]?.urlToImage} alt={top_head_line_news?.[0]?.title} />
+                        {!headline_loading ? <img className="w-full h-[400px] object-cover rounded-[1.5em]" src={headline_data?.articles?.[0]?.urlToImage} alt={headline_data?.articles?.[0]?.title} />
+                            :
+                            <div className="w-full h-full flex items-center justify-center">
+                                <div className="w-[60px] h-[60px] mx-auto"><Spinner h={60} w={60} /></div>
+                            </div>
+                        }
 
                         <div className="text-[20px] text-black font-[600]">
-                            {top_head_line_news?.[0]?.title}
+                            {headline_data?.articles?.[0]?.title}
                         </div>
                     </div>
 
@@ -89,7 +102,7 @@ function NewsScreenHome() {
 
                         <div className="w-full h-[fit-content] flex flex-col gap-[1.5em]">
 
-                            {!top_headlines_loading ? <>
+                            {!headline_loading ? <>
                                 {top_head_line_news?.slice(1, 3)?.map((news, index) => (
                                     <div className="w-full h-[80px] flex" key={index}>
                                         <img className="h-full flex-[0.3]" src={news?.urlToImage} alt="" />

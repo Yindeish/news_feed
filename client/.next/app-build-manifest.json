@@ -1,16 +1,44 @@
 {
   "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
+    "/(news_screens)/news/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/chunks/app/(news_screens)/news/layout.js"
+    ],
+    "/(news_screens)/news/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(news_screens)/news/page.css",
+      "static/chunks/app/(news_screens)/news/page.js"
+    ],
+    "/(news_screens)/news/categories/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(news_screens)/news/categories/page.css",
+      "static/chunks/app/(news_screens)/news/categories/page.js"
+    ],
+    "/(news_screens)/news/categories/[category_id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(news_screens)/news/categories/[category_id]/page.js"
+    ],
+    "/(news_screens)/news/[news_id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(news_screens)/news/[news_id]/page.css",
+      "static/chunks/app/(news_screens)/news/[news_id]/page.js"
     ]
   }
 }

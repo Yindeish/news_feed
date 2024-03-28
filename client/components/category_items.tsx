@@ -23,7 +23,7 @@ function CategoryItems({ list, query }: { list: News[], query: CategoryType }) {
     }
 
     useEffect(() => {
-        const articles = (data?.articles as News[])?.map((article, index: number) => ({ ...article, id: index }));
+        const articles = (data?.articles as News[])?.map((article, index: number) => ({ ...article, id: index, urlToImage: article?.urlToImage || 'https://clarionhealthcare.com/wp-content/uploads/2020/12/default-fallback-image-1536x1024.png' }));
         dispatch(set_news({ name: query, news: articles as News[] }))
     }, [data, error, isLoading])
 
