@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { PayloadAction, Draft } from '@reduxjs/toolkit';
-import { CategoryEnum, CategoryType, News, NewsState } from '@/interfaces/news';
+import { CategoryEnum, CategoryType, News, NewsArrays, NewsState } from '@/interfaces/news';
 import { NEWS_API_KEY, NEWS_API_URL } from '@/constants/global';
 import { last_3_days, today_date } from '@/utils';
 
@@ -85,9 +85,24 @@ const news_slice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        set_news: (state: Draft<NewsState>, action: PayloadAction<{ name: string, news: News[] }>) => {
+        set_news: (state, action: PayloadAction<{ name: string, news: News[] }>) => {
             const { name, news } = action.payload;
-            state[name + '_news'] = news;
+            // state[name + '_news'] = news;
+            switch (name) {
+                case CategoryEnum.business: state.business_news = news; break;
+                case CategoryEnum.crime: state.crime_news = news; break;
+                case CategoryEnum.entertainment: state.entertainment_news = news; break;
+                case CategoryEnum.education: state.education_news = news; break;
+                case CategoryEnum.sport: state.sport_news = news; break;
+                case CategoryEnum.earth: state.earth_news = news; break;
+                case CategoryEnum.fashion: state.fashion_news = news; break;
+                case CategoryEnum.life_style: state.life_style_news = news; break;
+                case CategoryEnum.local: state.local_news = news; break;
+                case CategoryEnum.politics: state.politics_news = news; break;
+                case CategoryEnum.science: state.science_news = news; break;
+                case CategoryEnum.technology: state.technology_news = news; break;
+                case CategoryEnum.weather: state.weather_news = news; break;
+            }
         },
 
         set_top_head_line_news: (state: Draft<NewsState>, action: PayloadAction<News[]>) => {

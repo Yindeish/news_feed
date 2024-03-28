@@ -34,7 +34,7 @@ interface News {
     content: string
 }
 
-interface NewsState {
+interface NewsState extends NewsArrays {
     country: string,
     query: string,
     category: string,
@@ -43,6 +43,11 @@ interface NewsState {
     top_head_line_news: News[],
     // Headline news -> not in category
     categories: string[],
+    current_news: News | null,
+    current_related_news: News[],
+}
+
+interface NewsArrays {
     local_news: News[],
     politics_news: News[],
     entertainment_news: News[],
@@ -56,10 +61,9 @@ interface NewsState {
     fashion_news: News[],
     science_news: News[],
     weather_news: News[],
-    current_news: News | null,
-    current_related_news: News[]
+    // [key: string]: News[] | null
 }
 
-export type { News, NewsState, CategoryType }
+export type { News, NewsState, CategoryType, NewsArrays }
 export { CategoryEnum }
 
