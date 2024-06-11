@@ -18,7 +18,7 @@ function page() {
 
 
   return (
-    <div className="w-full h-[95vh] f-full flex items-center justify-center">
+    <div className="w-full h-[95vh] f-full flex items-center justify-center text-[1.2rem]">
       <div className="w-full h-[fit-content] flex flex-col items-center justify-center gap-[3em]">
         <div className={`flex gap-[2em] text-[18px] text-black ${open_sans.className}`}>Log in or <span className="text-white bg-[#ED1507] py-[0.3em] px-[1em] rounded-[1em]">Register</span> </div>
 
@@ -39,7 +39,7 @@ function page() {
             <a className="text-[16px] font-[400] text-[#0617AE]" href="/forgot_password">Forgot password?</a>
           </div>
 
-          <button onClick={() => router.push('/news/')} className="w-full py-[0.3em] px-[1em] rounded-[1em] bg-[#0617AE] text-white" type="submit">login</button>
+          <button onClick={() => router.push('/news')} className="w-full py-[0.3em] px-[1em] rounded-[1em] bg-[#0617AE] text-white" type="submit">login</button>
         </div>
       </div>
     </div>

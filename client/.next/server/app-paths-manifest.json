@@ -1,7 +1,7 @@
 {
   "/page": "app/page.js",
-  "/(news_screens)/news/categories/page": "app/(news_screens)/news/categories/page.js",
-  "/(news_screens)/news/categories/[category_id]/page": "app/(news_screens)/news/categories/[category_id]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(news_screens)/news/page": "app/(news_screens)/news/page.js",
   "/(news_screens)/news/[news_id]/page": "app/(news_screens)/news/[news_id]/page.js",
-  "/(news_screens)/news/page": "app/(news_screens)/news/page.js"
+  "/(news_screens)/news/categories/[category_id]/page": "app/(news_screens)/news/categories/[category_id]/page.js"
 }

@@ -18,7 +18,7 @@ function CategoriesIndicators() {
                 <div className="w-auto h-full flex gap-[1em] items-center">
 
                     {categories?.map((category, index) => (
-                        <a href={`#${category}`} className={`w-[auto] text-[black] uppercase py-[0.3em] px-[1em] rounded-full bg-[#8F9BFF] cursor-pointer active:scale-[0.95] font-[600] text-[16px] ${open_sans.className}`} key={index}>{category}</a>
+                        <a href={`/news/categories/${category}/#${category}`} className={`w-[auto] text-[black] uppercase py-[0.3em] px-[1em] rounded-full bg-[#8F9BFF] cursor-pointer active:scale-[0.95] font-[600] text-[16px] ${open_sans.className}`} key={index}>{category}</a>
                     ))}
 
                 </div>

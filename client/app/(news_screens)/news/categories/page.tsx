@@ -6,8 +6,6 @@ import CategoryItems from "@/components/category_items";
 import CategoryTitle from "@/components/category_title";
 import { CategoryEnum, CategoryType } from "@/interfaces/news";
 import news_selectors from "@/selectors/news";
-import Flame from "@/svgs/flame";
-
 
 function Categories() {
     const { crime_news, earth_news, education_news } = news_selectors()

@@ -23,12 +23,6 @@
       "static/css/app/(news_screens)/news/page.css",
       "static/chunks/app/(news_screens)/news/page.js"
     ],
-    "/(news_screens)/news/categories/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(news_screens)/news/categories/page.css",
-      "static/chunks/app/(news_screens)/news/categories/page.js"
-    ],
     "/(news_screens)/news/categories/[category_id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
